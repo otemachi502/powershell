@@ -58,11 +58,11 @@ LanscopeのサーバーはAWS EC2にインストールされておりストレ�
 - ログ一括CSVエクスポート(CSV)<br>
 毎月1回、95日前から126日前までのデータをS3バケットにアップロード。前回バックアップと同じファイルがあれば上書き。ただし古いファイルのほうがファイルサイズが大きいファイルはスキップする（結局31日分しかバックアップデータがとれていないのでこの仕様はいらないかも）。<br>
 
-        [図: バケット構造]<br>
-        s3://midori-lanscope-logs-archive/<br>
-        ├─ csv/YYYY/MM/DD/<br>
-        ├─ dat/YYYY/MM/DD/<br>
-        └─ systemdata/backup-YYYYMMDD/<br>
+        [図: バケット構造]
+        s3://midori-lanscope-logs-archive/
+        ├─ csv/YYYY/MM/DD/***.csv
+        ├─ dat/YYYY/MM/DD/***.dat
+        └─ systemdata/backup-YYYYMMDD/***.dat
 
 S3バケットにアップロードされたデータ（オブジェクト）は下記のライフサイクルルールにより、よりコールドなストレージクラスに自動で移される。<br>
 - アップロード時: スタンダード<br>

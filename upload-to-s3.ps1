@@ -2,8 +2,8 @@ param(
   [string]$Bucket = "midori-lanscope-logs-archive",
   [string]$CsvRoot = "D:\ログ一括CSVエクスポート",
   [string]$DatRoot = "D:\CatBackup\ログ検索データ",
-  [int]$DaysBack = 55,            # 何日分さかのぼるか（当日除外）
-  [int]$StartOffsetDays = 97,      # 何日前から開始するか（1=昨日）
+  [int]$DaysBack = 31,            # 何日分さかのぼるか（当日除外）
+  [int]$StartOffsetDays = 96,      # 何日前から開始するか（1=昨日）
   [int]$StabilizeSeconds = 30,    # ファイルサイズ安定待ち
   [int]$MaxRetries = 3,           # 失敗時のリトライ回数
   [int]$RetryDelaySeconds = 5,    # リトライ間隔（秒）

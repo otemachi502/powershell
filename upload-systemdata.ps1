@@ -17,16 +17,4 @@ Get-ChildItem -Path $SourceDir -File | ForEach-Object {
     aws s3 cp $_.FullName $dest
 }
 
-# 古い世代を削除（4世代残す）
-$allBackups = aws s3 ls "s3://$Bucket/$Prefix/" | ForEach-Object {
-    ($_ -split "\s+")[3]
-} | Where-Object { $_ -like "backup-*" } | Sort-Object
-
-$toDelete = $allBackups | Select-Object -First ([math]::Max(0, ($allBackups.Count - 4)))
-
-foreach ($del in $toDelete) {
-    Write-Host "Deleting old backup set: $del"
-    aws s3 rm "s3://$Bucket/$Prefix/$del" --recursive
-}
-
 Write-Host "=== END SYSTEMDATA BACKUP ($timestamp) ==="

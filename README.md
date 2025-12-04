@@ -69,7 +69,7 @@ LanscopeのサーバーはAWS EC2にインストールされておりストレ�
         s3://midori-lanscope-logs-archive/
         ├─ csv/YYYY/MM/DD/***.csv (旧バックアップ)
         ├─ dat/YYYY/MM/DD/***.dat (旧バックアップ)
-        ├─ systemdata/backup-YYYYMMDD/***.dat
+        ├─ systemdata/backup-YYYYMMDD/***.dat (システムデータ:ログではない)
         └─ zip/
             └── 2025/
                 ├── 07/
@@ -102,4 +102,4 @@ S3バケットにアップロードされたデータ（オブジェクト）は
 - アップロードから30日経過: Glacier Flexible Retrieval<br>
 - アップロードから365日経過: Glacier Deep Archive<br>
 
-S3にアップロードしたデータの削除は今のところ手動。<br>
+S3にアップロードした後サーバーに残っているデータの削除は今のところ手動。<br>
